@@ -26,7 +26,7 @@ shinyServer(function(input, output, session) {
   output$transakcije <- renderTable({
     # Naredimo poizvedbo
     # x %>% f(y, ...) je ekvivalentno f(x, y, ...)
-    t <- tbl.transakcija %>% filter(znesek > input$min) %>%
+    t <- tbl.transakcija %>% filter(znesek > !!input$min) %>%
       arrange(znesek) %>% data.frame()
     # Čas izpišemo kot niz
     t$cas <- as.character(t$cas)
