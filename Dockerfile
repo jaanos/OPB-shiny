@@ -14,7 +14,7 @@ RUN mkdir -p ${RSTUDIO_PROJECTS_SETTINGS}
 COPY . ${PROJECT_DIR}
 RUN echo -n "${PROJECT_FILE}" > ${RSTUDIO_PROJECTS_SETTINGS}/last-project-path
 RUN chown -R ${NB_USER} ${HOME}
-RUN echo "POSTGRES_PORT=443" > /etc/R/Renviron
+RUN echo "POSTGRES_PORT=443" >> /etc/R/Renviron
 USER ${NB_USER}
 
 RUN if [ -f ${PROJECT_INSTALL} ]; then R --quiet -f ${PROJECT_INSTALL}; fi
