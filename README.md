@@ -4,7 +4,7 @@
 * [![RStudio](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jaanos/OPB-shiny/master?urlpath=rstudio) RStudio
 
 
-Ta repozitorij vsebuje minimalen primer spletne aplikacije z ogrodjem [Shiny](https://shiny.rstudio.com/) in povezavo na podatkovno bazo [PostgreSQL](https://www.postgresql.org/).
+Ta repozitorij vsebuje minimalen primer spletne aplikacije z ogrodjem [Shiny](https://shiny.rstudio.com/) in povezavo na podatkovno bazo [PostgreSQL](https://www.postgresql.org/) za potrebe predmeta [Osnove podatkovnih baz](https://github.com/jaanos/OPB).
 
 
 ## Aplikacija
