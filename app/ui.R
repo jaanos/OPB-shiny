@@ -14,7 +14,7 @@ shinyUI(fluidPage(
     ),
 
     mainPanel(
-      tableOutput("transakcije")
+      DT::dataTableOutput("transakcije")
     )
   )
 ))

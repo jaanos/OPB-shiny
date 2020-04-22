@@ -12,7 +12,7 @@ drv <- dbDriver("PostgreSQL")
 # da prisilimo prekinitev povezave v primeru napake
 tryCatch({
   # Vzpostavimo povezavo
-  conn <- dbConnect(drv, dbname=db, host=host, user=user, password=password)
+  conn <- dbConnect(drv, dbname=auth$db, host=auth$host, user=auth$user, password=auth$password)
   
   # Poizvedbo zgradimo s funkcijo build_sql
   # in izvedemo s funkcijo dbGetQuery
@@ -33,7 +33,7 @@ tryCatch({
   # Pošljemo poizvedbo
   dbSendQuery(conn, build_sql("INSERT INTO transakcija (znesek, racun, opis)
                                VALUES (", znesek, ", ", racun, ", ", opis, ")", con=conn))
-  }, finally = {
+  }, finally={
     # Na koncu nujno prekinemo povezavo z bazo,
     # saj preveč odprtih povezav ne smemo imeti
     dbDisconnect(conn)

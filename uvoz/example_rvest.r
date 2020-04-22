@@ -14,10 +14,10 @@ tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
 
 # Nadomestimo decimalne vejice in ločila tisočic ter pretvorimo v števila
 sl <- locale(decimal_mark=",", grouping_mark=".")
-for (i in c(2, 3, 5, 6)) {
+for (i in c(2, 5, 6)) {
   tabela[[i]] <- tabela[[i]] %>% parse_number(na="-", locale=sl)
 }
 tabela[[9]] <- tabela[[9]] %>% parse_character(na="-")
 
 # Zapišemo v datoteko CSV
-write_csv(tabela, "obcine.csv", na="")
+write_csv(tabela, "podatki/obcine.csv", na="")

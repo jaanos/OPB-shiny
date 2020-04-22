@@ -14,7 +14,8 @@ drv <- dbDriver("PostgreSQL")
 
 shinyServer(function(input, output, session) {
   # Vzpostavimo povezavo
-  conn <- dbConnect(drv, dbname=db, host=host, user=user, password=password, port=DB_PORT)
+  conn <- dbConnect(drv, dbname=auth$db, host=auth$host, user=auth$user, password=auth$password,
+                    port=DB_PORT)
   # Pripravimo tabelo
   tbl.transakcija <- tbl(conn, "transakcija")
   
@@ -23,15 +24,13 @@ shinyServer(function(input, output, session) {
     dbDisconnect(conn)
   })
   
-  output$transakcije <- renderTable({
+  output$transakcije <- DT::renderDataTable({
     # Naredimo poizvedbo
     # x %>% f(y, ...) je ekvivalentno f(x, y, ...)
     t <- tbl.transakcija %>% filter(znesek > !!input$min) %>%
       arrange(znesek) %>% data.frame()
     # Preverimo, da smo dobili kako transakcijo
     validate(need(nrow(t) > 0, "Ni transakcij!"))
-    # Čas izpišemo kot niz
-    t$cas <- as.character(t$cas)
     # Vrnemo dobljeno razpredelnico
     t
   })
