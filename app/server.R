@@ -28,6 +28,8 @@ shinyServer(function(input, output, session) {
     # x %>% f(y, ...) je ekvivalentno f(x, y, ...)
     t <- tbl.transakcija %>% filter(znesek > !!input$min) %>%
       arrange(znesek) %>% data.frame()
+    # Preverimo, da smo dobili kako transakcijo
+    validate(need(nrow(t) > 0, "Ni transakcij!"))
     # Čas izpišemo kot niz
     t$cas <- as.character(t$cas)
     # Vrnemo dobljeno razpredelnico
