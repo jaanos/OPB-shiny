@@ -1,5 +1,5 @@
 # Nastavitvena datoteka za Binder
-FROM jaanos/appr:base-2019
+FROM jaanos/appr:base-2020
 
 ENV PROJECT_DIR ${HOME}/OPB-shiny
 ENV PROJECT_FILE ${PROJECT_DIR}/OPB-shiny.Rproj

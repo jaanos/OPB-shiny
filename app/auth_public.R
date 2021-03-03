@@ -1,5 +1,5 @@
 auth <- list(
-  db='banka2020_janos',
+  db='banka2021_janos',
   host='baza.fmf.uni-lj.si',
   user='javnost',
   password='javnogeslo'
